@@ -9,9 +9,11 @@ The-kernel-package-for-cygwin
 官方kernel.sin 内核不能用此脚本！
 但是官方sin内核用强刷工具再次解包为kernel.elf，可以使用！
 打包
- GB内核                 ./gbpack
+ 
+
+GB内核                 ./gbpack
 
 
- ICS JB内核             ./pack
- 
- 
+ICS JB内核             ./pack
+
+
