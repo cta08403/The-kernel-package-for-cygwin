@@ -11,7 +11,7 @@ kumquat
 你将会得到ramdisk文件夹 , 内核kernel   ，CMDLINE cmdline.txt 这几个文件  还会得到一个3文件可以不用！
 
 官方kernel.sin 内核不能用此脚本！
-
+但是官方sin内核用强刷工具再次解包为kernel.elf，可以使用！
 打包
  GB内核                 ./gbpack
  ICS JB内核             ./pack
