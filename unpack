@@ -6,7 +6,7 @@ import os
 import struct
 import shutil
 
-outName = ("kernel","ramdisk.img","cmdline.txt","RPM.bin")
+outName = ("kernel","ramdisk.img","cmdline.txt")
 
 def getSegNum(f):
   f.seek(44)
@@ -37,13 +37,17 @@ def main(fname, output=None):
     f.seek(seg[1])
     data = f.read(seg[0])
 
-    if i < 3:
+    if i < 4:
       outFileName = "%s" %(outName[i])
     else:
       outFileName = "%s-%s" %(fBaseName,i)
 
     with open(outFileName, 'wb') as wf:
       wf.write(data)
+    
+    addrFileName="addr_%s" %(outFileName)
+    with open(addrFileName, 'wb') as wfaddr:
+      wfaddr.write(hex(seg[2]))
   
     if i == 1:
       ramdiskDir = "ramdisk"
