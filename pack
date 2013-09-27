@@ -1,0 +1,15 @@
+#!/bin/bash
+# Tools
+TOOL_MKELF=$(dirname $0)/mkelf.py
+
+DIR_RAMDISK="ramdisk"
+FILE_RAMDISK="ramdisk.img"
+
+# Generate ramdisk file
+cd $DIR_RAMDISK && find . | cpio -o -H newc | gzip > ../$FILE_RAMDISK && cd ..
+
+# Make kernel-updated.elf
+python tools/mkelf.py -o new_kernel.elf kernel@0x00008000 ramdisk.img@0x01000000,ramdisk  cmdline.txt@0x00000000,cmdline
+
+# Clear temporary files
+rm $FILE_RAMDISK
